@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务器状态监控</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment@1.0.1/dist/chartjs-adapter-moment.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>服务器状态监控</h1>
+        <div id="servers-container" class="servers-grid"></div>
+        
+        <div class="charts-section">
+            <div class="charts-header">
+                <h2>性能图表</h2>
+                <div class="chart-controls">
+                    <select id="time-range-selector" class="time-range-selector">
+                        <option value="1h">最近1小时</option>
+                        <option value="3h">最近3小时</option>
+                        <option value="12h">最近12小时</option>
+                        <option value="1d">最近1天</option>
+                        <option value="7d">最近7天</option>
+                        <option value="all">所有数据</option>
+                    </select>
+                    <button id="refresh-btn" class="refresh-btn">刷新</button>
+                </div>
+            </div>
+            
+            <div class="charts-group">
+                <div class="chart-section">
+                    <h3 class="chart-title">内存使用 (%)</h3>
+                    <div class="charts-container">
+                        <div class="chart-wrapper full-width">
+                            <canvas id="memoryChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-section">
+                    <h3 class="chart-title">活跃会话</h3>
+                    <div class="charts-container">
+                        <div class="chart-wrapper full-width">
+                            <canvas id="sessionsChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="storage-info">
+            <div class="storage-status" id="storage-status">数据已保存到浏览器本地存储</div>
+            <button id="clear-storage" class="clear-storage-btn">清除历史数据</button>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html> 
